@@ -1,0 +1,430 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "API de cursos Itehl Digital",
+    "description": "Esta API se ancarga de manejar los cursos brindados por la empresa.",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://virtserver.swaggerhub.com/Estudiante745/Cursos/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    },
+    {
+      "url": "https://app.swaggerhub.com/apis/Estudiante745/Cursos/1.0.0",
+      "description": "SwaggerHub API Auto Mocking"
+    },
+    {
+      "url": "https://api.javierrocha/v1/cursos/"
+    }
+  ],
+  "tags": [
+    {
+      "name": "cursos",
+      "description": "Maneja la información de los cursos"
+    }
+  ],
+  "paths": {
+    "/": {
+      "post": {
+        "tags": [
+          "cursos"
+        ],
+        "summary": "Inserta información de nuevo curso en la base de datos",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "Token de autenticación en API.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BodyCursoPost"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "(OK) La información del curso se guardo correctamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExitoCursoPost"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "(Bad Request) Los datos enviados son incorrectos o hay datos obligatorios no enviados"
+          },
+          "401": {
+            "description": "(Unauthorized) No hay autorización para llamar al servicio"
+          },
+          "404": {
+            "description": "(NotFound) No se encontró información"
+          },
+          "500": {
+            "description": "Error en servidor"
+          }
+        }
+      }
+    },
+    "/{idCurso}": {
+      "get": {
+        "tags": [
+          "cursos"
+        ],
+        "summary": "Obtiene la infomación de la base de datos de un curso.",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "Token de autenticación en API.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idCurso",
+            "in": "path",
+            "description": "Identificador del curso a obtener",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(OK) La informaciÃ³n del curso se obtuvo correctamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExitoCursoGet"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "(Bad Request) Los datos enviados son incorrectos o hay datos obligatorios no enviados"
+          },
+          "401": {
+            "description": "(Unauthorized) No hay autorización para llamar al servicio"
+          },
+          "404": {
+            "description": "(NotFound) No se encontró información"
+          },
+          "500": {
+            "description": "Error en servidor"
+          }
+        }
+      }
+    },
+    "/actualiza/{idCurso}": {
+      "put": {
+        "tags": [
+          "cursos"
+        ],
+        "summary": "Actualiza la informacion de un curso en la base de datos.",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "Token de autenticación en API.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idCurso",
+            "in": "path",
+            "description": "Identificador del curso a obtener",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/BodyCursoPut"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "(OK) La información del curso se actualizó correctamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExitoCursoPost"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "(Bad Request) Los datos enviados son incorrectos o hay datos obligatorios no enviados"
+          },
+          "401": {
+            "description": "(Unauthorized) No hay autorización para llamar al servicio"
+          },
+          "404": {
+            "description": "(NotFound) No se encontró información"
+          },
+          "500": {
+            "description": "Error en servidor"
+          }
+        }
+      }
+    },
+    "/elimina/{idCurso}": {
+      "delete": {
+        "tags": [
+          "cursos"
+        ],
+        "summary": "Elimina logicamente un curso.",
+        "parameters": [
+          {
+            "name": "token",
+            "in": "header",
+            "description": "Token de autenticación en API.",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "idCurso",
+            "in": "path",
+            "description": "Identificador del curso a obtener",
+            "required": true,
+            "style": "simple",
+            "explode": false,
+            "schema": {
+              "type": "number"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "(OK) El curso se eliminó correctamente",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ExitoCursoPost"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "(Bad Request) Los datos enviados son incorrectos o hay datos obligatorios no enviados"
+          },
+          "401": {
+            "description": "(Unauthorized) No hay autorización para llamar al servicio"
+          },
+          "404": {
+            "description": "(NotFound) No se encontró información"
+          },
+          "500": {
+            "description": "Error en servidor"
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "BodyCursoPost": {
+        "type": "object",
+        "properties": {
+          "id_curso": {
+            "type": "number",
+            "example": 1
+          },
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del Curso",
+            "example": "Manejo Modulo CRM"
+          },
+          "costo": {
+            "type": "number",
+            "description": "Costo del curso",
+            "example": 0
+          },
+          "descripcion": {
+            "type": "string",
+            "description": "Descripción del curso.",
+            "example": "Se brinda el curso para aprender el manejo del aplicativo CRM de la empresa."
+          },
+          "horas": {
+            "type": "number",
+            "description": "Cantidad de horas del curso.",
+            "example": 8
+          },
+          "dirigido": {
+            "type": "string",
+            "description": "Dirigido a",
+            "example": "Area Comercial"
+          },
+          "modalidad": {
+            "type": "string",
+            "description": "Modalidad del Curso",
+            "example": "Privado"
+          }
+        }
+      },
+      "ExitoCursoPost": {
+        "type": "object",
+        "properties": {
+          "respuesta": {
+            "type": "integer",
+            "description": "Bandera que nos dice si la llamada al servicio fue satisfactoria",
+            "enum": [
+              1
+            ]
+          },
+          "idCurso": {
+            "type": "integer",
+            "description": "Id correspondiente al curso",
+            "enum": [
+              233
+            ]
+          }
+        }
+      },
+      "ExitoCursoGet": {
+        "type": "object",
+        "properties": {
+          "respuesta": {
+            "type": "number",
+            "description": "Codigo del curso",
+            "example": 1
+          },
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del Curso",
+            "example": "Manejo Modulo CRM"
+          },
+          "costo": {
+            "type": "number",
+            "description": "Costo del curso",
+            "example": 0
+          },
+          "descripcion": {
+            "type": "string",
+            "description": "Descripción del curso.",
+            "example": "Se brinda el curso para aprender el manejo del aplicativo CRM de la empresa."
+          },
+          "horas": {
+            "type": "number",
+            "description": "Cantidad de horas del curso.",
+            "example": 8
+          },
+          "dirigido": {
+            "type": "string",
+            "description": "Dirigido a",
+            "example": "Area Comercial"
+          },
+          "modalidad": {
+            "type": "string",
+            "description": "Modalidad del Curso",
+            "example": "Privado"
+          }
+        }
+      },
+      "BodyCursoPut": {
+        "type": "object",
+        "properties": {
+          "id_curso": {
+            "type": "number",
+            "description": "Codigo del curso",
+            "example": 1
+          },
+          "nombre": {
+            "type": "string",
+            "description": "Nombre del Curso",
+            "example": "Manejo Modulo CRM"
+          },
+          "costo": {
+            "type": "number",
+            "description": "Costo del curso",
+            "example": 0
+          },
+          "descripcion": {
+            "type": "string",
+            "description": "Descripción del curso.",
+            "example": "Se brinda el curso para aprender el manejo del aplicativo CRM de la empresa."
+          },
+          "horas": {
+            "type": "number",
+            "description": "Cantidad de horas del curso.",
+            "example": 8
+          },
+          "dirigido": {
+            "type": "string",
+            "description": "Dirigido a",
+            "example": "Area Comercial"
+          },
+          "modalidad": {
+            "type": "string",
+            "description": "Modalidad del Curso",
+            "example": "Privado"
+          }
+        }
+      }
+    },
+    "responses": {
+      "Unauthorized": {
+        "description": "(Unauthorized) No hay autorización para llamar al servicio"
+      },
+      "NotFound": {
+        "description": "(NotFound) No se encontró información"
+      },
+      "BadRequest": {
+        "description": "(Bad Request) Los datos enviados son incorrectos o hay datos obligatorios no enviados"
+      },
+      "ServerError": {
+        "description": "Error en servidor"
+      }
+    },
+    "parameters": {
+      "token": {
+        "name": "token",
+        "in": "header",
+        "description": "Token de autenticación en API.",
+        "required": true,
+        "style": "simple",
+        "explode": false,
+        "schema": {
+          "type": "string"
+        }
+      }
+    }
+  }
+}

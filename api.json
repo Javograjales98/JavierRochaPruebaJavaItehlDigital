@@ -1,0 +1,80 @@
+{
+  "cursos": [
+    {
+      "id_curso": 1,
+      "nombre": "Modulo CRM",
+      "costo": 0,
+      "descripcion": "Orientado al manejo del modulo CRM de la compañia",
+      "horas": 8,
+      "dirigido": "Departamento Comercial",
+      "modalidad": "Privado"
+    },
+    {
+      "id_curso": 2,
+      "nombre": "Logistica Eficiente",
+      "costo": 200000,
+      "descripcion": "Orientado a la eficiencia del departamento",
+      "horas": 12,
+      "dirigido": "Departamento Logistica",
+      "modalidad": "Online"
+    },
+    {
+      "id_curso": 3,
+      "nombre": "Mercadeo",
+      "costo": 0,
+      "descripcion": "Orientado a creación de campañas de mercadeo",
+      "horas": 6,
+      "dirigido": "Departamento Mercadeo",
+      "modalidad": "OnDemand"
+    }
+    
+  ],
+  "modalidades": [
+    {
+      "id":1,
+      "nombre": "Privado",
+      "descripcion": "Para empleados y terceros"
+    },
+    {
+      "id": 2,
+      "nombre": "Online",
+      "descripcion": "Para empleados y terceros"
+    },
+    {
+      "id": 3,
+      "nombre": "OnDemand",
+      "descripcion": "Para empleados y terceros"
+     
+    }
+  ],
+  "descuentos": [
+    {
+      "id": 1,
+      "nombre": "Descuento 10%",
+      "modalidad": "Privado",
+      "pais": "Colombia",
+      "descuento": 10,
+      "curso": "Modulo CRM",
+      "fecha_fin": "31/03/2021"
+    },
+    {
+      "id": 2,
+      "nombre": "Descuento 20",
+      "modalidad": "Online",
+      "pais": "Peru",
+      "descuento": 20,
+      "curso": "Logistica Eficiente",
+      "fecha_fin": "31/03/2021"
+    },
+    {
+      "id_curso": 3,
+      "nombre": "Descuento 30",
+      "modalidad": "OnDemand",
+      "pais": "Colombia",
+      "descuento": 30,
+      "curso": "Mercadeo",
+      "fecha_fin": "31/03/2021"
+    }
+      
+    ]
+}
